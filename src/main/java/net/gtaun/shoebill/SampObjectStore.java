@@ -288,4 +288,17 @@ public interface SampObjectStore
 	 * @return Actor's poolsize
 	 */
 	int getActorPoolSize();
+
+	/**
+	 * Sets an interceptor for a given method (may be null)
+	 * @param clazz Which class.
+	 * @param methodName Method name.
+	 * @param signature Method signature.
+	 * @param interceptor Function that will intercept. May be null.
+	 */
+	<T> void registerInterceptor(Class<T> clazz,
+								 String methodName,
+								 Class<?>[] signature,
+								 MethodInterceptor<T> interceptor) throws NoSuchMethodException;
+
 }
